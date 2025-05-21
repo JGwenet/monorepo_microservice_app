@@ -7,5 +7,5 @@ FROM node:14
 WORKDIR /usr/src/app
 COPY --from=node-builder /usr/src/app/ ./
 RUN ls 
-EXPOSE 5000
+EXPOSE 5001
 CMD ["/bin/sh", "-c", "cd /usr/src/app && npm start"]

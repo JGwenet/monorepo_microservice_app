@@ -1,6 +1,6 @@
 module.exports = {
     db: {
-        url: 'mongodb://localhost:27017/online-shop',
+        url: 'mongodb://localhost:27017/shop',
         options: {
             useNewUrlParser: true,
             useUnifiedTopology: true,
