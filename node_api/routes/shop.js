@@ -10,6 +10,25 @@ const Db = require('../db/db');
 
 const DB = new Db();
 
+
+/**
+ * @swagger
+ * /api/shop/info:
+ *   get:
+ *     summary: Get shop info
+ *     responses:
+ *       200:
+ *         description: Shop info
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 total_products:
+ *                   type: integer
+ *                 total_orders:
+ *                   type: integer
+ */
 router.get("/info", async (req, res) => {
     try {
         const total = await DB.getShopInfo();    

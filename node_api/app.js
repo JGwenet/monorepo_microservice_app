@@ -6,12 +6,30 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const colors = require('colors');
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsdoc = require('swagger-jsdoc');
 
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Monorepo Microservice API',
+      version: '1.0.0',
+      description: 'API documentation for the microservice app',
+    },
+  },
+  apis: ['./routes/*.js'],
+};
 
-const mongooseUrl = require('./db/config').db.url;
+const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
 
 const app = express();
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+
+const mongooseUrl = require('./db/config').db.url;
 
 
 app.use(cors());
